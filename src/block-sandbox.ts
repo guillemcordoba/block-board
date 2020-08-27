@@ -22,9 +22,10 @@ export class BlockSandbox extends LitElement {
         <block-sandbox-block-selector
           .availableBlocks=${this.availableBlocks}
         ></block-sandbox-block-selector>
-        <div slot="appContent" class="column">
+        <div slot="appContent" class="column" style="height: 100%;">
           <block-sandbox-layout-editor
             style="flex: 1;"
+            class="column"
             .availableBlocks=${this.availableBlocks}
           ></block-sandbox-layout-editor>
         </div>
