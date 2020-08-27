@@ -1,0 +1,34 @@
+{
+  "name": "block-sandbox",
+  "version": "0.0.0",
+  "description": "Webcomponent block-sandbox following open-wc recommendations",
+  "author": "block-sandbox",
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run tsc:watch\" \"es-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
+    "tsc:watch": "tsc --watch",
+    "test": "tsc && karma start --coverage",
+    "test:watch": "concurrently --kill-others --names tsc,karma \"npm run tsc:watch\" \"karma start --auto-watch=true --single-run=false\"",
+    "storybook": "concurrently --kill-others --names tsc,storybook \"npm run tsc:watch\" \"start-storybook --node-resolve --watch --open\"",
+    "storybook:build": "build-storybook"
+  },
+  "dependencies": {
+    "@material/mwc-drawer": "^0.18.0",
+    "@vaadin/vaadin-split-layout": "^4.3.0",
+    "lit-element": "^2.4.0",
+    "lit-html": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "13.11.1",
+    "es-dev-server": "^1.23.0",
+    "typescript": "~3.9.0",
+    "concurrently": "^5.1.0",
+    "tslib": "^1.11.0",
+    "@open-wc/testing-karma": "^3.0.0",
+    "deepmerge": "^3.2.0",
+    "@open-wc/testing": "^2.0.0",
+    "@open-wc/demoing-storybook": "^2.0.0"
+  }
+}
