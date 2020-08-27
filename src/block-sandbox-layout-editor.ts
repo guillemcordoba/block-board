@@ -9,7 +9,7 @@ export class BlockSandboxLayoutEditor extends LitElement {
   static styles = sharedStyles;
 
   @property({ type: Array }) private availableBlocks: Array<Block> = [];
-  @property({ type: Array }) private blockLayout: BlockLayoutNode = {
+  @property({ type: Array }) blockLayout: BlockLayoutNode = {
     direction: "horizontal",
     slots: [undefined, undefined],
   };
@@ -25,23 +25,23 @@ export class BlockSandboxLayoutEditor extends LitElement {
           <mwc-icon-button
             @click=${() => {
               parentNode.slots[slotIndex] = {
-                direction: "horizontal",
-                slots: [blockName, undefined],
-              };
-              this.requestUpdate();
-            }}
-            >horizontal_split</mwc-icon-button
-          >
-          <mwc-icon-button
-            @click=${() => {
-              parentNode.slots[slotIndex] = {
                 direction: "vertical",
                 slots: [blockName, undefined],
               };
               this.requestUpdate();
             }}
-            >vertical_split</mwc-icon-button
-          >
+            icon="horizontal_split"
+          ></mwc-icon-button>
+          <mwc-icon-button
+            @click=${() => {
+              parentNode.slots[slotIndex] = {
+                direction: "horizontal",
+                slots: [blockName, undefined],
+              };
+              this.requestUpdate();
+            }}
+            icon="vertical_split"
+          ></mwc-icon-button>
         </div>
         <div
           style="background-color: gray; flex: 1;"
