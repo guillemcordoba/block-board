@@ -1,10 +1,18 @@
-import { LitElement, html, property, TemplateResult } from "lit-element";
+import { LitElement, html, property, TemplateResult, css } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
+import { styleMap } from "lit-html/directives/style-map";
 import { BlockLayoutNode, Block, BlockSlot } from "./block";
-import { sharedStyles } from './sharedStyles';
+import { sharedStyles } from "./sharedStyles";
 
 export class BlockSandboxLayoutRenderer extends LitElement {
-  static styles = sharedStyles;
+  static styles = [
+    sharedStyles,
+    css`
+      :host {
+        display: flex;
+      }
+    `,
+  ];
 
   @property({ type: Array }) availableBlocks!: Array<Block>;
   @property({ type: Object }) blockLayout!: BlockLayoutNode;
@@ -28,8 +36,23 @@ export class BlockSandboxLayoutRenderer extends LitElement {
           row: blockLayout.direction === "horizontal",
           column: blockLayout.direction === "vertical",
         })}
+        style="flex: 1;"
       >
-        ${blockLayout.slots.map((slot) => this.renderSlot(slot))}
+        <div
+          style=${styleMap({
+            flex: blockLayout.firstSlotRelativeSize * 100 + "%",
+            display: 'flex'
+          })}
+        >
+          ${this.renderSlot(blockLayout.slots[0])}
+        </div>
+        <div
+          style=${styleMap({
+            flex: (1 - blockLayout.firstSlotRelativeSize) * 100 + "%",
+          })}
+        >
+          ${this.renderSlot(blockLayout.slots[1])}
+        </div>
       </div>
     `;
   }

@@ -12,6 +12,7 @@ export class BlockSandboxLayoutEditor extends LitElement {
   @property({ type: Array }) blockLayout: BlockLayoutNode = {
     direction: "horizontal",
     slots: [undefined, undefined],
+    firstSlotRelativeSize: 0.5,
   };
 
   renderBlockSlot(
@@ -26,6 +27,7 @@ export class BlockSandboxLayoutEditor extends LitElement {
             @click=${() => {
               parentNode.slots[slotIndex] = {
                 direction: "vertical",
+                firstSlotRelativeSize: 0.5,
                 slots: [blockName, undefined],
               };
               this.requestUpdate();
@@ -36,6 +38,7 @@ export class BlockSandboxLayoutEditor extends LitElement {
             @click=${() => {
               parentNode.slots[slotIndex] = {
                 direction: "horizontal",
+                firstSlotRelativeSize: 0.5,
                 slots: [blockName, undefined],
               };
               this.requestUpdate();
@@ -66,6 +69,20 @@ export class BlockSandboxLayoutEditor extends LitElement {
       <vaadin-split-layout
         .orientation=${blockLayout.direction}
         style="flex: 1;"
+        @splitter-dragend=${(e: any) => {
+          const getPxSize = (slotElement: any) =>
+            parseInt(
+              slotElement
+                .assignedNodes()[0]
+                .style.flex.split(" ")[2]
+                .split("px")[0]
+            );
+          const primaryPxSize = getPxSize(e.path[0].$.primary);
+          const secondaryPxSize = getPxSize(e.path[0].$.secondary);
+
+          blockLayout.firstSlotRelativeSize =
+            primaryPxSize / (primaryPxSize + secondaryPxSize);
+        }}
       >
         ${blockLayout.slots.map((slot, index) => {
           if (slot === undefined || typeof slot === "string")

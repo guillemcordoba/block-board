@@ -15,13 +15,34 @@ export class BlockSandbox extends LitElement {
       name: "block1",
       render: () => html`<p>ahaaa</p>`,
     },
+
+    {
+      name: "block2",
+      render: () => html`<h1>ñasdljfñlasdjfñlsakdf</h1>`,
+    },
+
+    {
+      name: "block3",
+      render: () =>
+        html`<ul>
+          <li>Item1</li>
+          <li>Item2</li>
+        </ul>`,
+    },
   ];
 
   @property({ type: Array }) savedBlockLayout:
     | BlockLayoutNode
     | undefined = undefined;
 
-  static styles = sharedStyles;
+  static styles = [
+    sharedStyles,
+    css`
+      :host {
+        display: flex;
+      }
+    `,
+  ];
 
   saveLayout() {
     const editor: BlockSandboxLayoutEditor = this.shadowRoot?.getElementById(
@@ -36,6 +57,7 @@ export class BlockSandbox extends LitElement {
   renderLayout() {
     return html`
       <block-sandbox-layout-renderer
+        style="flex: 1;"
         .blockLayout=${this.savedBlockLayout}
         .availableBlocks=${this.availableBlocks}
       ></block-sandbox-layout-renderer>
@@ -44,7 +66,7 @@ export class BlockSandbox extends LitElement {
 
   renderEditingMode() {
     return html`
-      <mwc-drawer>
+      <mwc-drawer style="flex: 1;">
         <div class="column">
           <div class="row" style="justify-content: flex-end;">
             <mwc-icon-button
