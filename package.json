@@ -7,7 +7,7 @@
   "main": "index.js",
   "module": "index.js",
   "scripts": {
-    "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run tsc:watch\" \"es-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
+    "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run tsc:watch\" \"es-dev-server --config demo/es-dev-server.config.js\"",
     "tsc:watch": "tsc --watch",
     "test": "tsc && karma start --coverage",
     "test:watch": "concurrently --kill-others --names tsc,karma \"npm run tsc:watch\" \"karma start --auto-watch=true --single-run=false\"",
@@ -15,7 +15,6 @@
     "storybook:build": "build-storybook"
   },
   "dependencies": {
-    "@material/mwc-button": "^0.18.0",
     "@material/mwc-drawer": "^0.18.0",
     "@material/mwc-icon-button": "^0.18.0",
     "@vaadin/vaadin-split-layout": "^4.3.0",
@@ -23,14 +22,24 @@
     "lit-html": "^1.1.2"
   },
   "devDependencies": {
-    "@types/node": "13.11.1",
-    "es-dev-server": "^1.23.0",
-    "typescript": "~3.9.0",
-    "concurrently": "^5.1.0",
-    "tslib": "^1.11.0",
-    "@open-wc/testing-karma": "^3.0.0",
-    "deepmerge": "^3.2.0",
+    "@holochain-open-dev/calendar-events": "0.0.2",
+    "@material/mwc-button": "^0.18.0",
+    "@material/mwc-checkbox": "^0.18.0",
+    "@material/mwc-circular-progress": "^0.18.0",
+    "@material/mwc-formfield": "^0.18.0",
+    "@open-wc/demoing-storybook": "^2.0.0",
     "@open-wc/testing": "^2.0.0",
-    "@open-wc/demoing-storybook": "^2.0.0"
+    "@open-wc/testing-karma": "^3.0.0",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@rollup/plugin-replace": "^2.3.3",
+    "@types/node": "13.11.1",
+    "buffer": "^5.6.0",
+    "concurrently": "^5.1.0",
+    "deepmerge": "^3.2.0",
+    "es-dev-server": "^1.23.0",
+    "es-dev-server-rollup": "0.0.8",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "tslib": "^1.11.0",
+    "typescript": "~3.9.0"
   }
 }
