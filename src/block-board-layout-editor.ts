@@ -1,19 +1,30 @@
 import { LitElement, html, property, TemplateResult } from "lit-element";
-import "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
-import "@material/mwc-icon-button";
+import { SplitLayoutElement } from "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 
 import { Block, BlockLayoutNode } from "./block";
 import { sharedStyles } from "./sharedStyles";
+import { Scoped } from "scoped-element-mixin";
+import { IconButton } from "@material/mwc-icon-button";
+import { BlockBoardSlot } from "./block-board-slot";
 
-export class BlockSandboxLayoutEditor extends LitElement {
+customElements.define('block-board-slot', BlockBoardSlot);
+export class BlockBoardLayoutEditor extends Scoped(LitElement) {
   static styles = sharedStyles;
 
   @property({ type: Array }) private availableBlocks: Array<Block> = [];
-  @property({ type: Array }) blockLayout: BlockLayoutNode = {
+  @property({ type: Object }) blockLayout: BlockLayoutNode = {
     direction: "horizontal",
     slots: [undefined, undefined],
     firstSlotRelativeSize: 0.5,
   };
+
+  get scopedElements() {
+    return {
+      "block-board-slot": BlockBoardSlot,
+      "vaadin-split-layout": SplitLayoutElement,
+      "mwc-icon-button": IconButton,
+    };
+  }
 
   renderBlockSlot(
     blockName: string | undefined,
@@ -56,12 +67,18 @@ export class BlockSandboxLayoutEditor extends LitElement {
           }}
           @dragover=${(e: DragEvent) => e.preventDefault()}
         >
-          ${blockName !== undefined
-            ? this.availableBlocks.find((b) => b.name === blockName)?.render()
+          ${blockName !== undefined && this.findBlock(blockName)
+            ? html`<block-board-slot
+                .block=${this.findBlock(blockName)}
+              ></block-board-slot>`
             : html``}
         </div>
       </div>
     `;
+  }
+
+  findBlock(blockName: string): Block | undefined {
+    return this.availableBlocks.find((b) => b.name === blockName);
   }
 
   renderLayoutNode(blockLayout: BlockLayoutNode): TemplateResult {
@@ -97,5 +114,3 @@ export class BlockSandboxLayoutEditor extends LitElement {
     return this.renderLayoutNode(this.blockLayout);
   }
 }
-
-customElements.define("block-sandbox-layout-editor", BlockSandboxLayoutEditor);

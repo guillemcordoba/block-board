@@ -1,15 +1,15 @@
 ```js script
 import { html } from '@open-wc/demoing-storybook';
-import '../dist/block-sandbox.js';
+import '../dist/block-board.js';
 
 export default {
-  title: 'BlockSandbox',
-  component: 'block-sandbox',
+  title: 'Blockboard',
+  component: 'block-board',
   options: { selectedPanel: "storybookjs/knobs/panel" },
 };
 ```
 
-# BlockSandbox
+# Blockboard
 
 A component for...
 
@@ -24,16 +24,16 @@ A component for...
 ### Installation
 
 ```bash
-yarn add block-sandbox
+yarn add block-board
 ```
 
 ```js
-import 'block-sandbox/block-sandbox.js';
+import 'block-board/block-board.js';
 ```
 
 ```js preview-story
 export const Simple = () => html`
-  <block-sandbox></block-sandbox>
+  <block-board></block-board>
 `;
 ```
 
@@ -43,6 +43,6 @@ export const Simple = () => html`
 
 ```js preview-story
 export const CustomTitle = () => html`
-  <block-sandbox title="Hello World"></block-sandbox>
+  <block-board title="Hello World"></block-board>
 `;
 ```

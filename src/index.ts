@@ -1,2 +1,1 @@
-import { BlockSandbox } from './block-sandbox';
-window.customElements.define('block-sandbox', BlockSandbox);
+export { BlockBoard } from './block-board';

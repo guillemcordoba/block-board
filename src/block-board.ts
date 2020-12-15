@@ -1,35 +1,26 @@
 import { html, css, LitElement, property } from "lit-element";
 import { Block, BlockLayoutNode } from "./block";
-import "./block-sandbox-block-selector";
-import "./block-sandbox-layout-editor";
-import "./block-sandbox-layout-renderer";
-import "@material/mwc-drawer";
-import "@material/mwc-icon-button";
+import "./block-board-block-selector";
+import "./block-board-layout-editor";
+import "./block-board-layout-renderer";
+import { Drawer } from "@material/mwc-drawer";
+import { IconButton } from "@material/mwc-icon-button";
 import { sharedStyles } from "./sharedStyles";
-import { BlockSandboxLayoutEditor } from "./block-sandbox-layout-editor";
+import { BlockBoardLayoutEditor } from "./block-board-layout-editor";
+import { Scoped } from "scoped-element-mixin";
+import { BlockBoardLayoutRenderer } from "./block-board-layout-renderer";
+import { BlockBoardBlockSelector } from "./block-board-block-selector";
 
-export class BlockSandbox extends LitElement {
+export class BlockBoard extends Scoped(LitElement) {
   @property({ type: Boolean }) private editing: boolean = true;
-  @property({ type: Array }) private availableBlocks: Array<Block> = [
-    {
-      name: "block1",
-      render: () => html`<p>ahaaa</p>`,
-    },
+  @property({ type: Array }) private _availableBlocks: Array<Block> = [];
 
-    {
-      name: "block2",
-      render: () => html`<h1>ñasdljfñlasdjfñlsakdf</h1>`,
-    },
-
-    {
-      name: "block3",
-      render: () =>
-        html`<ul>
-          <li>Item1</li>
-          <li>Item2</li>
-        </ul>`,
-    },
-  ];
+  set availableBlocks(blocks: Block[]) {
+    this._availableBlocks = [...blocks];
+  }
+  get availableBlocks() {
+    return this._availableBlocks;
+  }
 
   @property({ type: Array }) savedBlockLayout:
     | BlockLayoutNode
@@ -44,10 +35,20 @@ export class BlockSandbox extends LitElement {
     `,
   ];
 
+  get scopedElements() {
+    return {
+      "mwc-drawer": Drawer,
+      "mwc-icon-button": IconButton,
+      "block-board-layout-renderer": BlockBoardLayoutRenderer,
+      "block-board-layout-editor": BlockBoardLayoutEditor,
+      "block-board-block-selector": BlockBoardBlockSelector,
+    };
+  }
+
   saveLayout() {
-    const editor: BlockSandboxLayoutEditor = this.shadowRoot?.getElementById(
+    const editor: BlockBoardLayoutEditor = this.shadowRoot?.getElementById(
       "layout-editor"
-    ) as BlockSandboxLayoutEditor;
+    ) as BlockBoardLayoutEditor;
 
     this.savedBlockLayout = editor.blockLayout;
 
@@ -56,11 +57,11 @@ export class BlockSandbox extends LitElement {
 
   renderLayout() {
     return html`
-      <block-sandbox-layout-renderer
+      <block-board-layout-renderer
         style="flex: 1;"
         .blockLayout=${this.savedBlockLayout}
         .availableBlocks=${this.availableBlocks}
-      ></block-sandbox-layout-renderer>
+      ></block-board-layout-renderer>
     `;
   }
 
@@ -74,18 +75,18 @@ export class BlockSandbox extends LitElement {
               @click=${this.saveLayout}
             ></mwc-icon-button>
           </div>
-          <block-sandbox-block-selector
+          <block-board-block-selector
             .availableBlocks=${this.availableBlocks}
-          ></block-sandbox-block-selector>
+          ></block-board-block-selector>
         </div>
 
         <div slot="appContent" class="column" style="height: 100%;">
-          <block-sandbox-layout-editor
+          <block-board-layout-editor
             id="layout-editor"
             style="flex: 1;"
             class="column"
             .availableBlocks=${this.availableBlocks}
-          ></block-sandbox-layout-editor>
+          ></block-board-layout-editor>
         </div>
       </mwc-drawer>
     `;

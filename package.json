@@ -1,26 +1,28 @@
 {
-  "name": "block-sandbox",
+  "name": "block-board",
   "version": "0.0.0",
-  "description": "Webcomponent block-sandbox following open-wc recommendations",
-  "author": "block-sandbox",
+  "description": "Webcomponent block-board following open-wc recommendations",
+  "author": "block-board",
   "license": "MIT",
-  "main": "index.js",
-  "module": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
   "scripts": {
-    "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run tsc:watch\" \"es-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
-    "tsc:watch": "tsc --watch",
+    "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run build-watch\" \"es-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
+    "build": "tsc",
+    "build-watch": "tsc --watch",
     "test": "tsc && karma start --coverage",
-    "test:watch": "concurrently --kill-others --names tsc,karma \"npm run tsc:watch\" \"karma start --auto-watch=true --single-run=false\"",
-    "storybook": "concurrently --kill-others --names tsc,storybook \"npm run tsc:watch\" \"start-storybook --node-resolve --watch --open\"",
+    "test:watch": "concurrently --kill-others --names tsc,karma \"npm run build-watch\" \"karma start --auto-watch=true --single-run=false\"",
+    "storybook": "concurrently --kill-others --names tsc,storybook \"npm run build-watch\" \"start-storybook --node-resolve --watch --open\"",
     "storybook:build": "build-storybook"
   },
   "dependencies": {
-    "@material/mwc-button": "^0.18.0",
-    "@material/mwc-drawer": "^0.18.0",
-    "@material/mwc-icon-button": "^0.18.0",
+    "@material/mwc-button": "^0.20.0",
+    "@material/mwc-drawer": "^0.20.0",
+    "@material/mwc-icon-button": "^0.20.0",
     "@vaadin/vaadin-split-layout": "^4.3.0",
     "lit-element": "^2.4.0",
-    "lit-html": "^1.1.2"
+    "lit-html": "^1.1.2",
+    "scoped-element-mixin": "git+https://github.com/guillemcordoba/scoped-element-mixin.git"
   },
   "devDependencies": {
     "@types/node": "13.11.1",

@@ -1,9 +1,7 @@
-import { TemplateResult } from "lit-html";
-
 export interface Block {
   name: string;
 
-  render: () => TemplateResult;
+  render: (registry: CustomElementRegistry, root: ShadowRoot) => void;
 }
 
 export interface BlockLayoutNode {

@@ -1,19 +1,19 @@
-# \<block-sandbox>
+# \<block-board>
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 ```bash
-npm i block-sandbox
+npm i block-board
 ```
 
 ## Usage
 ```html
 <script type="module">
-  import 'block-sandbox/block-sandbox.js';
+  import 'block-board/block-board.js';
 </script>
 
-<block-sandbox></block-sandbox>
+<block-board></block-board>
 ```
 
 ## Testing with Karma

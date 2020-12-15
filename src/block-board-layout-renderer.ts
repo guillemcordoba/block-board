@@ -1,10 +1,12 @@
 import { LitElement, html, property, TemplateResult, css } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
+import { Scoped } from "scoped-element-mixin";
 import { BlockLayoutNode, Block, BlockSlot } from "./block";
+import { BlockBoardSlot } from "./block-board-slot";
 import { sharedStyles } from "./sharedStyles";
 
-export class BlockSandboxLayoutRenderer extends LitElement {
+export class BlockBoardLayoutRenderer extends Scoped(LitElement) {
   static styles = [
     sharedStyles,
     css`
@@ -14,14 +16,20 @@ export class BlockSandboxLayoutRenderer extends LitElement {
     `,
   ];
 
+  get scopedElements() {
+    return {
+      'block-board-slot': BlockBoardSlot
+    }
+  }
+
   @property({ type: Array }) availableBlocks!: Array<Block>;
   @property({ type: Object }) blockLayout!: BlockLayoutNode;
 
   renderSlot(slot: BlockSlot): TemplateResult {
     if (typeof slot === "string") {
       const block = this.availableBlocks.find((block) => block.name === slot);
-      if (!block) throw new Error(`Trying to render an unexisting block`);
-      return block.render();
+      if (!block) throw new Error(`Tried to render an unexisting block`);
+      return html`<block-board-slot .block=${block}></block-board-slot>`;
     } else if (slot !== undefined) {
       return this.renderNode(slot);
     } else {
@@ -41,7 +49,7 @@ export class BlockSandboxLayoutRenderer extends LitElement {
         <div
           style=${styleMap({
             flex: blockLayout.firstSlotRelativeSize * 100 + "%",
-            display: 'flex'
+            display: "flex",
           })}
         >
           ${this.renderSlot(blockLayout.slots[0])}
@@ -58,11 +66,6 @@ export class BlockSandboxLayoutRenderer extends LitElement {
   }
 
   render() {
-    return html`${this.renderNode(this.blockLayout)}`;
+    return this.renderNode(this.blockLayout);
   }
 }
-
-customElements.define(
-  "block-sandbox-layout-renderer",
-  BlockSandboxLayoutRenderer
-);

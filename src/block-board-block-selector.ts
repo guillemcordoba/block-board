@@ -2,7 +2,7 @@ import { LitElement, html, property } from "lit-element";
 import { Block } from "./block";
 import { sharedStyles } from "./sharedStyles";
 
-export class BlockSandboxBlockSelector extends LitElement {
+export class BlockBoardBlockSelector extends LitElement {
   static styles = sharedStyles;
 
   @property({ type: Array }) private availableBlocks: Array<Block> = [];
@@ -26,8 +26,3 @@ export class BlockSandboxBlockSelector extends LitElement {
     `;
   }
 }
-
-customElements.define(
-  "block-sandbox-block-selector",
-  BlockSandboxBlockSelector
-);
