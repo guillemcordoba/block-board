@@ -7,7 +7,7 @@ import { Drawer } from "@material/mwc-drawer";
 import { IconButton } from "@material/mwc-icon-button";
 import { sharedStyles } from "./sharedStyles";
 import { BlockBoardLayoutEditor } from "./block-board-layout-editor";
-import { Scoped } from "scoped-element-mixin";
+import { Scoped } from "scoped-elements";
 import { BlockBoardLayoutRenderer } from "./block-board-layout-renderer";
 import { BlockBoardBlockSelector } from "./block-board-block-selector";
 
