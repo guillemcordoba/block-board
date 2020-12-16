@@ -18,7 +18,7 @@ export class BlockBoardLayoutEditor extends Scoped(LitElement) {
     firstSlotRelativeSize: 0.5,
   };
 
-  get scopedElements() {
+  static get scopedElements() {
     return {
       "block-board-slot": BlockBoardSlot,
       "vaadin-split-layout": SplitLayoutElement,
@@ -69,7 +69,7 @@ export class BlockBoardLayoutEditor extends Scoped(LitElement) {
         >
           ${blockName !== undefined && this.findBlock(blockName)
             ? html`<block-board-slot
-                .block=${this.findBlock(blockName)}
+                .block=${this.findBlock(blockName) as Block}
               ></block-board-slot>`
             : html``}
         </div>
