@@ -14,7 +14,7 @@
     "test:watch": "concurrently --kill-others --names tsc,karma \"npm run build-watch\" \"karma start --auto-watch=true --single-run=false\"",
     "storybook": "concurrently --kill-others --names tsc,storybook \"npm run build-watch\" \"start-storybook --node-resolve --watch --open\"",
     "storybook:build": "build-storybook",
-    "publish-to-branch": "npm run lint && npm run build && gh-pages -d . -b build"
+    "publish-to-branch": "npm run build && gh-pages -d . -b build"
   },
   "dependencies": {
     "@material/mwc-button": "^0.20.0",
