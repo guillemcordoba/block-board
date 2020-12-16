@@ -9,7 +9,7 @@ import { BlockBoardLayoutEditor } from "./block-board-layout-editor";
 import { BlockBoardLayoutRenderer } from "./block-board-layout-renderer";
 import { BlockBoardBlockSelector } from "./block-board-block-selector";
 declare const BlockBoard_base: typeof LitElement & import("lit-element").Constructor<HTMLElement> & {
-    readonly scopedElements: import("scoped-element-mixin").Dictionary<{
+    readonly scopedElements: import("scoped-elements").Dictionary<{
         new (): HTMLElement;
         prototype: HTMLElement;
     }>;

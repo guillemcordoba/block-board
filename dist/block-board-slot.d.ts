@@ -1,7 +1,7 @@
 import { LitElement } from "lit-element";
 import { Block } from "./block";
 declare const BlockBoardSlot_base: typeof LitElement & import("lit-element").Constructor<HTMLElement> & {
-    readonly scopedElements: import("scoped-element-mixin").Dictionary<{
+    readonly scopedElements: import("scoped-elements").Dictionary<{
         new (): HTMLElement;
         prototype: HTMLElement;
     }>;

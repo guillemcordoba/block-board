@@ -3,7 +3,7 @@ import { SplitLayoutElement } from "@vaadin/vaadin-split-layout/vaadin-split-lay
 
 import { Block, BlockLayoutNode } from "./block";
 import { sharedStyles } from "./sharedStyles";
-import { Scoped } from "scoped-element-mixin";
+import { Scoped } from "scoped-elements";
 import { IconButton } from "@material/mwc-icon-button";
 import { BlockBoardSlot } from "./block-board-slot";
 

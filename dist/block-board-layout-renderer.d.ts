@@ -2,7 +2,7 @@ import { LitElement, TemplateResult } from "lit-element";
 import { BlockLayoutNode, Block, BlockSlot } from "./block";
 import { BlockBoardSlot } from "./block-board-slot";
 declare const BlockBoardLayoutRenderer_base: typeof LitElement & import("lit-element").Constructor<HTMLElement> & {
-    readonly scopedElements: import("scoped-element-mixin").Dictionary<{
+    readonly scopedElements: import("scoped-elements").Dictionary<{
         new (): HTMLElement;
         prototype: HTMLElement;
     }>;

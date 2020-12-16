@@ -2,7 +2,7 @@ import { __decorate } from "tslib";
 import { LitElement, html, property } from "lit-element";
 import { SplitLayoutElement } from "@vaadin/vaadin-split-layout/vaadin-split-layout.js";
 import { sharedStyles } from "./sharedStyles";
-import { Scoped } from "scoped-element-mixin";
+import { Scoped } from "scoped-elements";
 import { IconButton } from "@material/mwc-icon-button";
 import { BlockBoardSlot } from "./block-board-slot";
 customElements.define('block-board-slot', BlockBoardSlot);

@@ -1,6 +1,6 @@
 import { __decorate } from "tslib";
 import { html, LitElement, property, query } from "lit-element";
-import { Scoped } from "scoped-element-mixin";
+import { Scoped } from "scoped-elements";
 export class BlockBoardSlot extends Scoped(LitElement) {
     firstUpdated() {
         // If we have included the scoped-registries polyfill, we'll have the CustomElementRegistry on our shadow root

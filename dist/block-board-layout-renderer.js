@@ -2,7 +2,7 @@ import { __decorate } from "tslib";
 import { LitElement, html, property, css } from "lit-element";
 import { classMap } from "lit-html/directives/class-map";
 import { styleMap } from "lit-html/directives/style-map";
-import { Scoped } from "scoped-element-mixin";
+import { Scoped } from "scoped-elements";
 import { BlockBoardSlot } from "./block-board-slot";
 import { sharedStyles } from "./sharedStyles";
 export class BlockBoardLayoutRenderer extends Scoped(LitElement) {

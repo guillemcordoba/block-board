@@ -4,7 +4,7 @@ import { Block, BlockLayoutNode } from "./block";
 import { IconButton } from "@material/mwc-icon-button";
 import { BlockBoardSlot } from "./block-board-slot";
 declare const BlockBoardLayoutEditor_base: typeof LitElement & import("lit-element").Constructor<HTMLElement> & {
-    readonly scopedElements: import("scoped-element-mixin").Dictionary<{
+    readonly scopedElements: import("scoped-elements").Dictionary<{
         new (): HTMLElement;
         prototype: HTMLElement;
     }>;

@@ -1,5 +1,5 @@
 import { html, LitElement, property, query } from "lit-element";
-import { Scoped } from "scoped-element-mixin";
+import { Scoped } from "scoped-elements";
 import { Block } from "./block";
 
 export class BlockBoardSlot extends Scoped(LitElement) {
