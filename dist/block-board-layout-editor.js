@@ -16,7 +16,7 @@ export class BlockBoardLayoutEditor extends Scoped(LitElement) {
             firstSlotRelativeSize: 0.5,
         };
     }
-    get scopedElements() {
+    static get scopedElements() {
         return {
             "block-board-slot": BlockBoardSlot,
             "vaadin-split-layout": SplitLayoutElement,

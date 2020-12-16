@@ -10,7 +10,13 @@ export class BlockBoardSlot extends Scoped(LitElement) {
   _slot!: HTMLElement;
 
   firstUpdated() {
-    this.block.render(this.shadowRoot.customElements, this.shadowRoot);
+    // If we have included the scoped-registries polyfill, we'll have the CustomElementRegistry on our shadow root
+    const scopedRegistry = ((this.shadowRoot as any) as {
+      customElements: CustomElementRegistry;
+    }).customElements;
+    // Otherwise we just use the global one
+    const registry = scopedRegistry ? scopedRegistry : window.customElements;
+    this.block.render(registry, this.shadowRoot as ShadowRoot);
   }
 
   render() {

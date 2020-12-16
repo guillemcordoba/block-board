@@ -23,7 +23,7 @@ export class BlockBoard extends Scoped(LitElement) {
     get availableBlocks() {
         return this._availableBlocks;
     }
-    get scopedElements() {
+    static get scopedElements() {
         return {
             "mwc-drawer": Drawer,
             "mwc-icon-button": IconButton,

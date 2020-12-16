@@ -8,7 +8,12 @@ import { IconButton } from "@material/mwc-icon-button";
 import { BlockBoardLayoutEditor } from "./block-board-layout-editor";
 import { BlockBoardLayoutRenderer } from "./block-board-layout-renderer";
 import { BlockBoardBlockSelector } from "./block-board-block-selector";
-declare const BlockBoard_base: typeof LitElement & import("lit-element").Constructor<import("scoped-element-mixin/dist/ScopedElementMixin").ScopedElement>;
+declare const BlockBoard_base: typeof LitElement & import("lit-element").Constructor<HTMLElement> & {
+    readonly scopedElements: import("scoped-element-mixin").Dictionary<{
+        new (): HTMLElement;
+        prototype: HTMLElement;
+    }>;
+};
 export declare class BlockBoard extends BlockBoard_base {
     private editing;
     private _availableBlocks;
@@ -16,7 +21,7 @@ export declare class BlockBoard extends BlockBoard_base {
     get availableBlocks(): Block[];
     savedBlockLayout: BlockLayoutNode | undefined;
     static styles: import("lit-element").CSSResult[];
-    get scopedElements(): {
+    static get scopedElements(): {
         "mwc-drawer": typeof Drawer;
         "mwc-icon-button": typeof IconButton;
         "block-board-layout-renderer": typeof BlockBoardLayoutRenderer;

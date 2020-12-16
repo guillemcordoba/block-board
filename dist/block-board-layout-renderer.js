@@ -6,7 +6,7 @@ import { Scoped } from "scoped-element-mixin";
 import { BlockBoardSlot } from "./block-board-slot";
 import { sharedStyles } from "./sharedStyles";
 export class BlockBoardLayoutRenderer extends Scoped(LitElement) {
-    get scopedElements() {
+    static get scopedElements() {
         return {
             'block-board-slot': BlockBoardSlot
         };

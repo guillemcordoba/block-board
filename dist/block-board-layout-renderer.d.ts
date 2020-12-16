@@ -1,10 +1,15 @@
 import { LitElement, TemplateResult } from "lit-element";
 import { BlockLayoutNode, Block, BlockSlot } from "./block";
 import { BlockBoardSlot } from "./block-board-slot";
-declare const BlockBoardLayoutRenderer_base: typeof LitElement & import("lit-element").Constructor<import("scoped-element-mixin/dist/ScopedElementMixin").ScopedElement>;
+declare const BlockBoardLayoutRenderer_base: typeof LitElement & import("lit-element").Constructor<HTMLElement> & {
+    readonly scopedElements: import("scoped-element-mixin").Dictionary<{
+        new (): HTMLElement;
+        prototype: HTMLElement;
+    }>;
+};
 export declare class BlockBoardLayoutRenderer extends BlockBoardLayoutRenderer_base {
     static styles: import("lit-element").CSSResult[];
-    get scopedElements(): {
+    static get scopedElements(): {
         'block-board-slot': typeof BlockBoardSlot;
     };
     availableBlocks: Array<Block>;

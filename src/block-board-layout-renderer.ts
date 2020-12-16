@@ -16,7 +16,7 @@ export class BlockBoardLayoutRenderer extends Scoped(LitElement) {
     `,
   ];
 
-  get scopedElements() {
+  static get scopedElements() {
     return {
       'block-board-slot': BlockBoardSlot
     }

@@ -1,6 +1,11 @@
 import { LitElement } from "lit-element";
 import { Block } from "./block";
-declare const BlockBoardSlot_base: typeof LitElement & import("lit-element").Constructor<import("scoped-element-mixin/dist/ScopedElementMixin").ScopedElement>;
+declare const BlockBoardSlot_base: typeof LitElement & import("lit-element").Constructor<HTMLElement> & {
+    readonly scopedElements: import("scoped-element-mixin").Dictionary<{
+        new (): HTMLElement;
+        prototype: HTMLElement;
+    }>;
+};
 export declare class BlockBoardSlot extends BlockBoardSlot_base {
     block: Block;
     _slot: HTMLElement;

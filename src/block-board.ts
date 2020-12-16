@@ -35,7 +35,7 @@ export class BlockBoard extends Scoped(LitElement) {
     `,
   ];
 
-  get scopedElements() {
+  static get scopedElements() {
     return {
       "mwc-drawer": Drawer,
       "mwc-icon-button": IconButton,

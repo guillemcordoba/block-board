@@ -3,7 +3,11 @@ import { html, LitElement, property, query } from "lit-element";
 import { Scoped } from "scoped-element-mixin";
 export class BlockBoardSlot extends Scoped(LitElement) {
     firstUpdated() {
-        this.block.render(this.shadowRoot.customElements, this.shadowRoot);
+        // If we have included the scoped-registries polyfill, we'll have the CustomElementRegistry on our shadow root
+        const scopedRegistry = this.shadowRoot.customElements;
+        // Otherwise we just use the global one
+        const registry = scopedRegistry ? scopedRegistry : window.customElements;
+        this.block.render(registry, this.shadowRoot);
     }
     render() {
         return html ``;
