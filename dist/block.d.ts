@@ -1,6 +1,6 @@
 export interface Block {
     name: string;
-    render: (registry: CustomElementRegistry, root: ShadowRoot) => void;
+    render: (root: ShadowRoot, registry: CustomElementRegistry) => void;
 }
 export interface BlockLayoutNode {
     direction: "vertical" | "horizontal";
