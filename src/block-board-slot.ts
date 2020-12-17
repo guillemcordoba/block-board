@@ -16,7 +16,7 @@ export class BlockBoardSlot extends Scoped(LitElement) {
     }).customElements;
     // Otherwise we just use the global one
     const registry = scopedRegistry ? scopedRegistry : window.customElements;
-    this.block.render(registry, this.shadowRoot as ShadowRoot);
+    this.block.render(this.shadowRoot as ShadowRoot, registry);
   }
 
   render() {
