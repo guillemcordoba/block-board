@@ -12,7 +12,7 @@ import { Drawer } from "scoped-material-components/dist/mwc-drawer";
 import { IconButton } from "scoped-material-components/dist/mwc-icon-button";
 
 export class BlockBoard extends Scoped(LitElement) {
-  @property({ type: Boolean }) private editing: boolean = true;
+  @property({ type: Boolean }) public editing: boolean = true;
   @property({ type: Array }) private _availableBlocks: Array<Block> = [];
 
   set availableBlocks(blocks: Block[]) {
@@ -53,6 +53,12 @@ export class BlockBoard extends Scoped(LitElement) {
     this.blockLayout = editor.blockLayout;
 
     this.editing = false;
+
+    this.dispatchEvent(
+      new CustomEvent("board-saved", {
+        detail: { blockLayout: this.blockLayout },
+      })
+    );
   }
 
   renderLayout() {

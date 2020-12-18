@@ -15,7 +15,7 @@ declare const BlockBoard_base: typeof LitElement & import("lit-element").Constru
     }>;
 };
 export declare class BlockBoard extends BlockBoard_base {
-    private editing;
+    editing: boolean;
     private _availableBlocks;
     set availableBlocks(blocks: Block[]);
     get availableBlocks(): Block[];

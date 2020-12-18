@@ -37,6 +37,9 @@ export class BlockBoard extends Scoped(LitElement) {
         const editor = (_a = this.shadowRoot) === null || _a === void 0 ? void 0 : _a.getElementById("layout-editor");
         this.blockLayout = editor.blockLayout;
         this.editing = false;
+        this.dispatchEvent(new CustomEvent("board-saved", {
+            detail: { blockLayout: this.blockLayout },
+        }));
     }
     renderLayout() {
         return html `
