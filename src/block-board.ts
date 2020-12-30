@@ -50,7 +50,7 @@ export class BlockBoard extends (Scoped(
     };
   }
 
-  save() {
+  save(): BlockNode {
     const editor: BlockBoardLayoutEditor = this.shadowRoot?.getElementById(
       "layout-editor"
     ) as BlockBoardLayoutEditor;
@@ -66,6 +66,8 @@ export class BlockBoard extends (Scoped(
         bubbles: true,
       })
     );
+
+    return this.blockLayout;
   }
 
   renderLayout() {

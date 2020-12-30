@@ -45,6 +45,7 @@ export class BlockBoard extends Scoped(LitElement) {
             composed: true,
             bubbles: true,
         }));
+        return this.blockLayout;
     }
     renderLayout() {
         return html `
