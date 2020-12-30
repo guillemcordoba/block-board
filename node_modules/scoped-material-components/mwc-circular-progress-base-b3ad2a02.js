@@ -1,4 +1,4 @@
-import { _ as __decorate } from './tslib.es6-2abbead4.js';
+import { __decorate } from 'tslib';
 import { property, LitElement, html } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { styleMap } from 'lit-html/directives/style-map';
@@ -156,4 +156,4 @@ __decorate([
 ], CircularProgressBase.prototype, "ariaLabel", void 0);
 
 export { CircularProgressBase as C };
-//# sourceMappingURL=mwc-circular-progress-base-8a959938.js.map
+//# sourceMappingURL=mwc-circular-progress-base-b3ad2a02.js.map
