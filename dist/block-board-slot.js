@@ -13,7 +13,7 @@ export class BlockBoardSlot extends LitElement {
     static get styles() {
         return css `
       :host {
-        display: contents;
+        display: flex;
       }
     `;
     }

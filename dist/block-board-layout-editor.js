@@ -103,7 +103,7 @@ export class BlockBoardLayoutEditor extends Scoped(LitElement) {
         >
           ${blockName && this.findBlock(blockName)
             ? html `<block-board-slot
-                style="pointer-events: none;"
+                style="pointer-events: none; flex: 1;"
                 .block=${this.findBlock(blockName)}
               ></block-board-slot>`
             : html ``}

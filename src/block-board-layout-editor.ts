@@ -127,7 +127,7 @@ export class BlockBoardLayoutEditor extends (Scoped(
         >
           ${blockName && this.findBlock(blockName)
             ? html`<block-board-slot
-                style="pointer-events: none;"
+                style="pointer-events: none; flex: 1;"
                 .block=${this.findBlock(blockName) as Block}
               ></block-board-slot>`
             : html``}
