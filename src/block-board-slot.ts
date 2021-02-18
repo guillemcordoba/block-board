@@ -1,4 +1,11 @@
-import { html, LitElement, property, PropertyValues, query } from "lit-element";
+import {
+  css,
+  html,
+  LitElement,
+  property,
+  PropertyValues,
+  query,
+} from "lit-element";
 import { Block } from "./types";
 
 export class BlockBoardSlot extends LitElement {
@@ -17,5 +24,13 @@ export class BlockBoardSlot extends LitElement {
 
   render() {
     return html``;
+  }
+
+  static get styles() {
+    return css`
+      :host {
+        display: contents;
+      }
+    `;
   }
 }

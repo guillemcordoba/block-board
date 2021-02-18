@@ -5,4 +5,5 @@ export declare class BlockBoardSlot extends LitElement {
     _slot: HTMLElement;
     updated(changedValues: PropertyValues): void;
     render(): import("lit-element").TemplateResult;
+    static get styles(): import("lit-element").CSSResult;
 }

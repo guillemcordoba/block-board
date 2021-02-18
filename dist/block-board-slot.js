@@ -1,5 +1,5 @@
 import { __decorate } from "tslib";
-import { html, LitElement, property, query } from "lit-element";
+import { css, html, LitElement, property, query, } from "lit-element";
 export class BlockBoardSlot extends LitElement {
     updated(changedValues) {
         super.updated(changedValues);
@@ -9,6 +9,13 @@ export class BlockBoardSlot extends LitElement {
     }
     render() {
         return html ``;
+    }
+    static get styles() {
+        return css `
+      :host {
+        display: contents;
+      }
+    `;
     }
 }
 __decorate([
